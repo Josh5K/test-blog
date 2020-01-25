@@ -1,12 +1,17 @@
-name: GitHub Pages
-uses: crazy-max/ghaction-github-pages@v1.2.5
-with:
-  build_dir: public
-  committer_name: Josh5k
-  committer_email: josh.st.king@gmail.com
-  commit_message: Deploy
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
-on:
-  push:
-    branches:
-    - master
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: public
