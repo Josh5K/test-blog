@@ -1,0 +1,7 @@
+- name: GitHub Pages
+  uses: crazy-max/ghaction-github-pages@v1.2.5
+  with:
+    build_dir: public
+    committer_name: Josh5k
+    committer_email: josh.st.king@gmail.com
+    commit_message: Deploy
